@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Firdaus Rosli - Software Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2d3436;
+            --accent-color: #00a8ff;
+            --text-color: #2d3436;
+            --light-bg: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(45, 52, 54, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-color);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 1rem;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #dfe6e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid #dfe6e9;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        button {
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0097e6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .demo-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .demo-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .project-btn i {
+            font-size: 1rem;
+        }
+
+        .video-section {
+    padding: 5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 2rem 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Skills Section */
+.skills {
+    padding: 5rem 1rem;
+    background: var(--light-bg);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* Education Section */
+.education {
+    padding: 5rem 1rem;
+    background: white;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 2rem auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--accent-color);
+}
+
+.timeline-item {
+    margin: 2rem 0;
+    position: relative;
+    width: 50%;
+    padding: 0 2rem;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 5rem 1rem;
+    background: var(--light-bg);
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Enhanced Project Cards */
+.project-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,168,255,0.2) 0%, rgba(45,52,54,0.4) 100%);
+}
+
+/* Animation for project cards */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.project-card {
+    animation: fadeInScale 0.5s ease forwards;
+}
+
+/* Enhanced social links */
+.social-links a {
+    position: relative;
+}
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.testimonials {
+    padding: 5rem 1rem;
+    background: var(--light-bg);
+    overflow: hidden;
+}
+
+.testimonial-slider {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.testimonial-track {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    animation: slideTrack 30s linear infinite;
+}
+
+.testimonial-card {
+    flex: 0 0 350px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.quote-icon {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #2d3436;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--accent-color);
+    position: relative;
+    padding-left: 1rem;
+}
+
+.testimonial-author::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 20px;
+    background: var(--accent-color);
+    transform: translateY(-50%);
+}
+
+@keyframes slideTrack {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-350px * 3 - 2rem * 3));
+    }
+}
+
+/* Clone cards for infinite scroll */
+.testimonial-track {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    animation: slideTrack 30s linear infinite;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused;
+}
+
+/* Add this to your existing media queries */
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 300px;
+    }
+    
+    @keyframes slideTrack {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-300px * 3 - 2rem * 3));
+        }
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>FR</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Muhammad Firdaus Rosli</h1>
+            <p>Software Engineer | Full-Stack Developer | Problem Solver</p>
+            <div class="social-links">
+                <a href="https://github.com/daus7768"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-firdaus-3b8105270/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/daus_us3?igsh=ZmFuNzZrazBneG9h&utm_source=qr"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-hands-helping fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AutiReach</h3>
+                    <p>A comprehensive platform connecting the autism community through awareness programs, motivation modules, and integrated eCommerce solutions.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">API</span>
+                        <span class="tech-tag">Ai</span>
+                    </div>
+                    <div class="project-links">
+                    <a href="https://github.com/daus7768/autireach_project" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i> View Project     
+                    </a>
+                    
+                    <a href="#" target="_blank" class="project-btn demo-btn">
+                        <i class="fas fa-external-link-alt"></i>    Live Demo
+                    </a>
+                </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-message fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Messaging System</h3>
+                    <p>This assesement i complete to delivered to company hype nexus sdn bhd.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <br><br>
+                    <div class="project-links">
+                    <a href="https://github.com/daus7768/nexus" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i> View Project     
+                    </a>
+                    
+                    <a href="#" target="_blank" class="project-btn demo-btn">
+                        <i class="fas fa-external-link-alt"></i>    Live Demo
+                    </a>
+                </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-server fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">RunCloud Server Management </h3>
+                    <p>This project is assesement from company RunCloud that implementing subscription plans and server management functionalities in PHP.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                    <a href="https://github.com/daus7768/dausruncloud" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i> View Project     
+                    </a>
+                    
+                    <a href="https://runcloud.io/pricing" target="_blank" class="project-btn demo-btn">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+                </div>
+            </div>
+            
+            
+            
+        
+
+        </div>
+    </section>
+
+
+        <!-- Skills Section -->
+    <section class="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Web Development</h3>
+                <p>Expertise in PHP, JavaScript, HTML/CSS, and modern frameworks</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>Database Management</h3>
+                <p>Proficient in MySQL, MongoDB, and database design</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-mobile-alt skill-icon"></i>
+                <h3>Responsive Design</h3>
+                <p>Creating mobile-first, adaptive web applications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <h2 class="section-title">Watch My Journey</h2>
+            <div class="video-wrapper">
+                <!-- Replace VIDEO_ID with your actual YouTube video ID -->
+                <iframe 
+                    src="https://www.youtube.com/embed/OkoeTIDVQ1o" 
+                    title="Portfolio Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <h2 class="section-title">Education & Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Feb 2022 – Present</div>
+                    <h3>Bachelor of Information Technology
+                    (Hons.) in Software Engineering</h3>
+                    <p>University Kuala Lumpur MIIT</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">May 2019- March 2021</div>
+                    <h3>Science Course</h3>
+                    <p>Kedah Matriculation College</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+    <h2 class="section-title">What People Say</h2>
+    <div class="testimonial-slider">
+        <div class="testimonial-track">
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Firdaus is an exceptional developer with great attention to detail. His work on our project was outstanding."</p>
+                <p class="testimonial-author">Assoc. Prof. Ts. Dr.Munaisyah Abdullah (Deputy Director CIDEX -Centre of Innovative Digital Education & Emerging Tech.)</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Firdaus excelled in developing AutiReach, showcasing innovative solutions that perfectly aligned with our clinical requirements. "</p>
+                <p class="testimonial-author">- Dr. Norzila Bt Zakaria, Head of Psychiatry Department</p>
+            </div>
+                <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">""Firdaus, I’m truly impressed with your work! The project was delivered perfectly, and the extra technological features, especially the AI integration, make it even more outstanding. Well done!"</p>
+                <p class="testimonial-author">Datin Rozita (IFYP)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <form class="contact-form" action="https://formspree.io/f/xwpvoejb" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
